@@ -227,3 +227,39 @@ main {
         background-color: var(--background-300);
     }
 }
+
+
+
+
+.footer-group-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0 0 0 auto;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: var(--secondary-500);
+    font-size: 1rem;
+    &:hover, &:active {
+        color: white;
+    }
+}
+
+.footer-disclaimer {
+    color: var(--secondary-500);
+}
+
+footer {
+    --bs-border-color: var(--secondary-500);
+}

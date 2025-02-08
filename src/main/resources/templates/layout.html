@@ -89,8 +89,38 @@
 <main layout:fragment="_main"></main>
 
 <th:block layout:fragment="before-footer"></th:block>
-<footer>
-
+<footer class="container">
+    <div class="row py-3 my-4 border-top row-gap-2">
+        <div class="col-md-3">
+            <div class="footer-group-header">Links</div>
+            <ul class="footer-links">
+                <li>
+                    <a class="footer-link" href="/faq">FAQ</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="/terms">Terms of Service</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="/privacy">Privacy Policy</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="/contact">Contact</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="https://github.com/madimadica/radshare.run">GitHub</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="footer-group-header">Disclaimer</div>
+            <p class="footer-disclaimer">
+                <strong>Radshare.run</strong> is a fan site that is not associated with <strong>Digital Extremes</strong>.
+            </p>
+            <p class="footer-disclaimer">
+                Digital Extremes Ltd and Warframe are registered trademarks. All rights are reserved worldwide. This site has no official link with Digital Extremes Ltd or Warframe. All artwork, screenshots, characters or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of Digital Extremes Ltd.
+            </p>
+        </div>
+    </div>
 </footer>
 <th:block layout:fragment="after-footer"></th:block>
 
