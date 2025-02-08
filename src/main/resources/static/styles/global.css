@@ -1,0 +1,19 @@
+/* CSS for the global page layout template (header/footer/etc) */
+:root {
+    --app-navbar-height: 3.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--font, "sans-serif");
+}
+
+a {
+    color: var(--hyperlink, blue);
+}
+
+body {
+    color: var(--text);
+    background-color: var(--background);
+}
+

@@ -1,0 +1,226 @@
+/* Specifying color themes and overriding bootstrap colors */
+/* Based on https://www.realtimecolors.com/?colors=FFFFFF-0C0C0C-E7C78D-B4B4B4-9E7966&fonts=Inter-Inter */
+:root {
+    --font: "Inter", sans-serif;
+    --text: #FFFFFF;
+    --background: #0C0C0C;
+    --primary: #E7C78D;
+    --secondary: #B4B4B4;
+    --accent: #9E7966;
+
+    --text-50: #0d0d0d;
+    --text-100: #1a1a1a;
+    --text-200: #333333;
+    --text-300: #4d4d4d;
+    --text-400: #666666;
+    --text-500: #808080;
+    --text-600: #999999;
+    --text-700: #b3b3b3;
+    --text-800: #cccccc;
+    --text-900: #e6e6e6;
+    --text-950: #f2f2f2;
+
+    --background-50: #0d0d0d;
+    --background-100: #1a1a1a;
+    --background-150: #262626;
+    --background-200: #333333;
+    --background-300: #4d4d4d;
+    --background-400: #666666;
+    --background-500: #808080;
+    --background-600: #999999;
+    --background-700: #b3b3b3;
+    --background-800: #cccccc;
+    --background-900: #e6e6e6;
+    --background-950: #f2f2f2;
+
+    --primary-50: #fbf5ea;
+    --primary-100: #f6ead5;
+    --primary-200: #edd6ab;
+    --primary-300: #e4c181;
+    --primary-400: #dbad57;
+    --primary-500: #d2982d;
+    --primary-600: #a87a24;
+    --primary-700: #7e5b1b;
+    --primary-800: #543d12;
+    --primary-900: #2a1e09;
+    --primary-950: #150f04;
+
+    --secondary-50: #f2f2f2;
+    --secondary-100: #e6e6e6;
+    --secondary-200: #cccccc;
+    --secondary-300: #b3b3b3;
+    --secondary-400: #999999;
+    --secondary-500: #808080;
+    --secondary-600: #666666;
+    --secondary-700: #4d4d4d;
+    --secondary-800: #333333;
+    --secondary-900: #1a1a1a;
+    --secondary-950: #0d0d0d;
+
+    --accent-50: #f5f1ef;
+    --accent-100: #ebe4e0;
+    --accent-200: #d7c8c1;
+    --accent-300: #c3ada2;
+    --accent-400: #af9283;
+    --accent-500: #9c7663;
+    --accent-600: #7c5f50;
+    --accent-700: #5d473c;
+    --accent-800: #3e2f28;
+    --accent-900: #1f1814;
+    --accent-950: #100c0a;
+
+    --hyperlink: #499fff;
+}
+
+.btn-gold {
+    --bs-btn-color: black;
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-color: black;
+    --bs-btn-hover-bg: var(--primary-400);
+    --bs-btn-hover-border-color: var(--primary-400);
+    --bs-btn-focus-shadow-rgb: 239, 206, 148;
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: var(--primary-500);
+    --bs-btn-active-border-color: var(--primary-500);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: black;
+    --bs-btn-disabled-bg: var(--primary);
+    --bs-btn-disabled-border-color: var(--primary);
+}
+
+.btn-silver {
+    --bs-btn-color: black;
+    --bs-btn-bg: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+    --bs-btn-hover-color: black;
+    --bs-btn-hover-bg: var(--secondary-400);
+    --bs-btn-hover-border-color: var(--secondary-400);
+    --bs-btn-focus-shadow-rgb: 200, 200, 200;
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: var(--secondary-500);
+    --bs-btn-active-border-color: var(--secondary-500);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: black;
+    --bs-btn-disabled-bg: var(--secondary);
+    --bs-btn-disabled-border-color: var(--secondary);
+}
+
+.btn-bronze {
+    --bs-btn-color: black;
+    --bs-btn-bg: var(--accent);
+    --bs-btn-border-color: var(--accent);
+    --bs-btn-hover-color: black;
+    --bs-btn-hover-bg: var(--accent-400);
+    --bs-btn-hover-border-color: var(--accent-400);
+    --bs-btn-focus-shadow-rgb: 168, 140, 126;
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: var(--accent-500);
+    --bs-btn-active-border-color: var(--accent-500);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: black;
+    --bs-btn-disabled-bg: var(--accent);
+    --bs-btn-disabled-border-color: var(--accent);
+}
+
+
+.btn-outline-gold {
+    --bs-btn-color: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-color: black;
+    --bs-btn-hover-bg: var(--primary);
+    --bs-btn-hover-border-color: var(--primary);
+    --bs-btn-focus-shadow-rgb: 239, 206, 148;
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: var(--primary);
+    --bs-btn-active-border-color: var(--primary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--primary);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--primary);
+}
+
+.btn-outline-silver {
+    --bs-btn-color: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+    --bs-btn-hover-color: black;
+    --bs-btn-hover-bg: var(--secondary);
+    --bs-btn-hover-border-color: var(--secondary);
+    --bs-btn-focus-shadow-rgb: 200, 200, 200;
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: var(--secondary);
+    --bs-btn-active-border-color: var(--secondary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--secondary);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--secondary);
+}
+
+.btn-outline-bronze {
+    --bs-btn-color: var(--accent);
+    --bs-btn-border-color: var(--accent);
+    --bs-btn-hover-color: black;
+    --bs-btn-hover-bg: var(--accent);
+    --bs-btn-hover-border-color: var(--accent);
+    --bs-btn-focus-shadow-rgb: 168, 140, 126;
+    --bs-btn-active-color: black;
+    --bs-btn-active-bg: var(--accent);
+    --bs-btn-active-border-color: var(--accent);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--accent);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--accent);
+}
+
+.form-control, .form-select {
+    background-color: var(--background-100);
+    color: var(--text);
+    border-color: var(--background-300);
+    &:disabled {
+        background-color: var(--background-200);
+    }
+    &:focus {
+        background-color: var(--background-100);
+        color: var(--text);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 0rem var(--background-300);
+    }
+}
+
+.accordion {
+    --bs-accordion-color: var(--text);
+    --bs-accordion-bg: var(--background);
+    --bs-accordion-border-color: var(--background-200);
+    --bs-accordion-btn-color: var(--text);
+    --bs-accordion-btn-focus-border-color: var(--background-300);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.0625rem var(--background-400);
+    --bs-accordion-active-color: var(--text);
+    --bs-accordion-active-bg: var(--primary);
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E7C78D'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E7C78D'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center / 1em auto no-repeat;
+}
+
+.modal {
+    --bs-modal-color: var(--text);
+    --bs-modal-bg: var(--background);
+    --bs-modal-border-color: var(--background-200);
+    --bs-modal-header-border-color: var(--background-200);
+    --bs-modal-footer-border-color: var(--background-200);
+}
+
+.table {
+    --bs-table-color: var(--text);
+    --bs-table-striped-color: var(--text);
+    --bs-table-active-color: var(--text);
+    --bs-table-hover-color: var(--text);
+    --bs-table-bg: var(--background);
+    --bs-table-striped-bg: var(--background-100);
+    --bs-table-active-bg: var(--background-150);
+    --bs-table-hover-bg: var(--background-200);
+    --bs-table-border-color: var(--background-200);
+}
+

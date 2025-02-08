@@ -1,0 +1,23 @@
+.not-allowed {
+    cursor: not-allowed !important;
+    pointer-events: inherit !important;
+}
+
+.f-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cursor-ptr {
+    cursor: pointer !important;
+}
+
+.cursor-default {
+    cursor: default !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
