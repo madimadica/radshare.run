@@ -54,8 +54,15 @@ main {
     align-items: center;
 }
 
+.app-navbar-home-icon {
+    width: 2.5rem;
+}
+
 .app-navbar-home-link {
     font-size: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     color: black;
     font-weight: bold;
     text-decoration: none;
