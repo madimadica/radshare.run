@@ -17,3 +17,202 @@ body {
     background-color: var(--background);
 }
 
+
+.app-navbar {
+    background: var(--primary);
+    width: 100%;
+    height: var(--app-navbar-height);
+    margin: auto;
+    border-bottom: 1px solid var(--secondary-600);
+}
+
+.app-navbar-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.app-navbar-home-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.app-navbar-home-link {
+    font-size: 1.6rem;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover, &:active, &:focus {
+        color: #333;
+    }
+}
+
+.app-navbar-wrapper__desktop {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.app-navbar-links__desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 0 auto;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.app-navbar-link__desktop {
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: inline-flex;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    &:hover, &:active, &:focus {
+        color: black;
+        background-color: var(--accent);
+    }
+    transition: background-color 0.15s ease-in-out;
+}
+
+.app-navbar-auth__desktop {
+    display: flex;
+    align-items: center;
+    height: var(--app-navbar-height);
+    font-size: 1.1rem;
+}
+
+.app-navbar-wrapper__mobile {
+    display: none;
+    height: var(--app-navbar-height);
+    align-content: center;
+}
+
+.app-navbar-hamburger {
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 40rem) {
+    .app-navbar-wrapper__desktop {
+        display: none;
+    }
+    .app-navbar-wrapper__mobile {
+        display: block;
+    }
+}
+
+.mobile-sidebar {
+    position: absolute;
+    top: var(--app-navbar-height);
+    right: 0;
+    width: 20rem;
+    height: calc(100% - var(--app-navbar-height));
+    max-width: 80vw;
+    background: var(--background-100);
+    margin: 0;
+    z-index: 10;
+    color: var(--text);
+    border-left: 1px solid var(--background-600);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#mobile-sidebar-backdrop {
+    position: absolute;
+    top: var(--app-navbar-height);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+    display: block;
+    cursor: pointer;
+    content: " ";
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.mobile-sidebar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    list-style: none;
+    width: 100%;
+    margin: 0px;
+    & li {
+        width: 100%;
+    }
+}
+
+.mobile-sidebar-link {
+    background-color: var(--background-200);
+    color: var(--text);
+    text-decoration: none;
+    width: 100%;
+    font-size: 1.1rem;
+    display: inline-flex;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    &:hover, &:active, &:focus {
+        color: var(--text);
+        background-color: var(--background-300);
+    }
+}
+
+.mobile-sidebar__bottom {
+    border-top: 1px solid var(--background-400);
+    padding-top: 0.5rem;
+}
+
+.mobile-sidebar-section {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.mobile-sidebar-section-title {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.mobile-sidebar-section-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.25rem;
+}
+
+.mobile-sidebar-section-option {
+    background-color: var(--background-200);
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.4rem;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    &.selected {
+        background-color: var(--background-400);
+    }
+    &:hover, &:active, &:focus {
+        background-color: var(--background-300);
+    }
+}

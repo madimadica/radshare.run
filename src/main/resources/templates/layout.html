@@ -26,8 +26,63 @@
 </head>
 <body>
 <th:block layout:fragment="before-header"></th:block>
-<header>
+<header class="app-navbar">
+    <div class="app-navbar-container">
+        <div class="app-navbar-home-wrapper">
+            <a href="" class="app-navbar-home-link">Radshare</a>
+        </div>
 
+        <div class="app-navbar-wrapper__desktop">
+            <nav>
+                <ul class="app-navbar-links__desktop">
+                    <li>
+                        <a class="app-navbar-link__desktop" href="/find">Find</a>
+                    </li>
+                    <li>
+                        <a class="app-navbar-link__desktop" href="/host">Host</a>
+                    </li>
+                    <li>
+                        <a class="app-navbar-link__desktop" href="/guides">Guides</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="app-navbar-auth__desktop">
+                <a href="/profile" class="btn btn-bronze" role="button"><i class="bi bi-person-fill"> Username</i></a>
+            </div>
+        </div>
+
+        <div class="app-navbar-wrapper__mobile">
+            <div class="app-navbar-hamburger" id="mobile-hamburger">
+                <i class="bi bi-list"></i>
+            </div>
+            <div id="mobile-sidebar-backdrop" class="d-none"></div>
+            <div id="mobile-nav-menu" class="mobile-sidebar d-none">
+                <nav class="mobile-sidebar__nav">
+                    <ul class="mobile-sidebar-links">
+                        <li>
+                            <a href="/find" class="mobile-sidebar-link">Find</a>
+                        </li>
+                        <li>
+                            <a href="/host" class="mobile-sidebar-link">Host</a>
+                        </li>
+                        <li>
+                            <a href="/guides" class="mobile-sidebar-link">Guides</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mobile-sidebar__bottom">
+                    <div>
+                        <section class="mobile-sidebar-section">
+                            <div class="mobile-sidebar-section-title">Account</div>
+                            <div class="mobile-sidebar-section-options">
+                                <a href="/profile" class="btn btn-outline-gold w-100" role="button"><i class="bi bi-person-fill"> Username</i></a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <th:block layout:fragment="after-header"></th:block>
 
