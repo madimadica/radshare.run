@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{layout}" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-<head></head>
+<head>
+    <title>Home</title>
+</head>
 <body>
-<main>
+<main layout:fragment="main">
     <div class="container">
         <h1>Radshare</h1>
+        <ul>
+            <li th:each="r : ${relics}" th:text="|${r.era} ${r.name}|"></li>
+        </ul>
     </div>
 </main>
 </body>
