@@ -25,10 +25,10 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/radshare
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USER_3306}
+    url: jdbc:postgresql://localhost:5432/voidrelics
+    driver-class-name: org.postgresql.Driver
+    username: postgres
     password: ${DB_PASS_3306}
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 

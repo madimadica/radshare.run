@@ -1,4 +1,4 @@
-package com.madimadica.radshare;
+package com.madimadica.voidrelics;
 
 import com.madimadica.jdbc.web.InitializeJdbc;
 import org.springframework.boot.SpringApplication;
