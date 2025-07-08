@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">VoidRelics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
-    <meta name="_csrf" th:content="${_csrf.token}">
-    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <meta name="__csrf__" th:content="${_csrf.token}">
+    <meta name="__csrf_header__" th:content="${_csrf.headerName}">
+
+    <th:block sec:authorize="isAuthenticated()">
+        <meta name="__username__" th:content="${APP_USER.username}">
+        <meta name="__email__" th:content="${APP_USER.email}">
+        <meta name="__roles__" th:content="${APP_USER.roles}">
+    </th:block>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

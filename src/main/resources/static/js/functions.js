@@ -4,12 +4,12 @@
  * @return {string}
  */
 function getMetadata(name) {
-    return document.querySelector(`metadata[name="${name}"]`).getAttribute("content");
+    return document.querySelector(`meta[name="${name}"]`).getAttribute("content");
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const token = getMetadata("_csrf");
-    const header = getMetadata("_csrf_header");
+    const token = getMetadata("__csrf__");
+    const header = getMetadata("__csrf_header__");
     const originalFetch = window.fetch;
     window.fetch = function(url, options = {}) {
         options.headers = options.headers || {};

@@ -13,8 +13,6 @@ server:
 logging:
   level:
     org.springframework.web: "info"
-misc:
-  jwt-secret: ${VOIDRELICS_JWT_SECRET}
 
 ---
 
