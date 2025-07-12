@@ -7,6 +7,8 @@ import com.madimadica.voidrelics.auth.dto.UserLoginRequestDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -27,6 +29,7 @@ import java.io.IOException;
  * Returns successes as a {@link AuthenticatedUserDto}
  */
 public class CustomLoginAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomLoginAuthenticationFilter.class);
     private static final AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER = new AntPathRequestMatcher("/api/v1/account/login", "POST");
     private final ObjectMapper objectMapper;
     private SessionAuthenticationStrategy mySessionStrategy = new NullAuthenticatedSessionStrategy();
@@ -38,6 +41,7 @@ public class CustomLoginAuthenticationFilter extends AbstractAuthenticationProce
             resp.setStatus(200);
             resp.setContentType("application/json");
             CustomUser user = (CustomUser) auth.getPrincipal();
+            LOGGER.info("Logged in as {}", user);
             objectMapper.writeValue(resp.getOutputStream(), AuthenticatedUserDto.of(user));
         });
         super.setApplicationEventPublisher(eventPublisher);
