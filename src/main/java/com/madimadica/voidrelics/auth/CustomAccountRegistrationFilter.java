@@ -13,16 +13,16 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.io.IOException;
 
-public class AccountRegistrationFilter implements Filter {
+public class CustomAccountRegistrationFilter implements Filter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AccountRegistrationFilter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomAccountRegistrationFilter.class);
 
     private final RequestMatcher registerMatcher = new AntPathRequestMatcher("/api/v1/account/register", "POST");
     private final ObjectMapper objectMapper;
     private final UserAccountService userAccountService;
     private final CustomLoginAuthenticationFilter loginAuthFilter;
 
-    public AccountRegistrationFilter(ObjectMapper objectMapper, UserAccountService userAccountService, CustomLoginAuthenticationFilter loginAuthFilter) {
+    public CustomAccountRegistrationFilter(ObjectMapper objectMapper, UserAccountService userAccountService, CustomLoginAuthenticationFilter loginAuthFilter) {
         this.objectMapper = objectMapper;
         this.userAccountService = userAccountService;
         this.loginAuthFilter = loginAuthFilter;

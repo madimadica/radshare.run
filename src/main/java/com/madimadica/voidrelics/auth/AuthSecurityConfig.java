@@ -65,7 +65,7 @@ public class AuthSecurityConfig implements WebMvcConfigurer {
                 .anyRequest().permitAll()
         );
         var loginAuthFilter = new CustomLoginAuthenticationFilter(objectMapper, eventPublisher);
-        var registerFilter = new AccountRegistrationFilter(objectMapper, userAccountService, loginAuthFilter);
+        var registerFilter = new CustomAccountRegistrationFilter(objectMapper, userAccountService, loginAuthFilter);
         var logoutFilter = new CustomLogoutFilter(eventPublisher);
 
         http.logout(AbstractHttpConfigurer::disable);
