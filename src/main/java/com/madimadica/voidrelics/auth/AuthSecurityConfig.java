@@ -59,8 +59,8 @@ public class AuthSecurityConfig implements WebMvcConfigurer {
         // Default: Enable CSRF, Enable CORS, implicit JSESSIONID cookie associated with UserDetails
 
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/auth/login").permitAll()
-                .requestMatchers("/api/v1/auth/logout").authenticated()
+                .requestMatchers("/api/v1/account/login").permitAll()
+                .requestMatchers("/api/v1/account/logout").authenticated()
                 .requestMatchers("/api/v1/mod/**").hasAnyRole(AuthRole.ADMIN.toRoleName(), AuthRole.MODERATOR.toRoleName())
                 .anyRequest().permitAll()
         );

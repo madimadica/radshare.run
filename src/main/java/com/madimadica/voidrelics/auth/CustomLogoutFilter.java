@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class CustomLogoutFilter implements Filter {
 
-    private final RequestMatcher matcher = new AntPathRequestMatcher("/api/v1/auth/logout", "POST");
+    private final RequestMatcher matcher = new AntPathRequestMatcher("/api/v1/account/logout", "POST");
     private final SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
     private final HttpSessionCsrfTokenRepository csrfTokenRepository = new HttpSessionCsrfTokenRepository();
 

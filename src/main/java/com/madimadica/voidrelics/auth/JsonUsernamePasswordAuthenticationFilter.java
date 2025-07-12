@@ -27,7 +27,7 @@ import java.io.IOException;
  * Returns successes as a {@link AuthenticatedUserDto}
  */
 public class JsonUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-    private static final AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER = new AntPathRequestMatcher("/api/v1/auth/login", "POST");
+    private static final AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER = new AntPathRequestMatcher("/api/v1/account/login", "POST");
     private final ObjectMapper objectMapper;
     private SessionAuthenticationStrategy mySessionStrategy = new NullAuthenticatedSessionStrategy();
 
