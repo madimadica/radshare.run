@@ -26,12 +26,12 @@ import java.io.IOException;
  * Similar to a {@link UsernamePasswordAuthenticationFilter} but with JSON API formatting.
  * Returns successes as a {@link AuthenticatedUserDto}
  */
-public class JsonUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+public class CustomLoginAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     private static final AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER = new AntPathRequestMatcher("/api/v1/account/login", "POST");
     private final ObjectMapper objectMapper;
     private SessionAuthenticationStrategy mySessionStrategy = new NullAuthenticatedSessionStrategy();
 
-    public JsonUsernamePasswordAuthenticationFilter(ObjectMapper objectMapper, ApplicationEventPublisher eventPublisher) {
+    public CustomLoginAuthenticationFilter(ObjectMapper objectMapper, ApplicationEventPublisher eventPublisher) {
         super(DEFAULT_ANT_PATH_REQUEST_MATCHER);
         this.objectMapper = objectMapper;
         super.setAuthenticationSuccessHandler((req, resp, auth) -> {

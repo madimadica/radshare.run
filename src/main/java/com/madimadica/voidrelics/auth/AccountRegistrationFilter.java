@@ -20,9 +20,9 @@ public class AccountRegistrationFilter implements Filter {
     private final RequestMatcher registerMatcher = new AntPathRequestMatcher("/api/v1/account/register", "POST");
     private final ObjectMapper objectMapper;
     private final UserAccountService userAccountService;
-    private final JsonUsernamePasswordAuthenticationFilter loginAuthFilter;
+    private final CustomLoginAuthenticationFilter loginAuthFilter;
 
-    public AccountRegistrationFilter(ObjectMapper objectMapper, UserAccountService userAccountService, JsonUsernamePasswordAuthenticationFilter loginAuthFilter) {
+    public AccountRegistrationFilter(ObjectMapper objectMapper, UserAccountService userAccountService, CustomLoginAuthenticationFilter loginAuthFilter) {
         this.objectMapper = objectMapper;
         this.userAccountService = userAccountService;
         this.loginAuthFilter = loginAuthFilter;

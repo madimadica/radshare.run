@@ -64,7 +64,7 @@ public class AuthSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers("/api/v1/mod/**").hasAnyRole(AuthRole.ADMIN.toRoleName(), AuthRole.MODERATOR.toRoleName())
                 .anyRequest().permitAll()
         );
-        var loginAuthFilter = new JsonUsernamePasswordAuthenticationFilter(objectMapper, eventPublisher);
+        var loginAuthFilter = new CustomLoginAuthenticationFilter(objectMapper, eventPublisher);
         var registerFilter = new AccountRegistrationFilter(objectMapper, userAccountService, loginAuthFilter);
         var logoutFilter = new CustomLogoutFilter(eventPublisher);
 
