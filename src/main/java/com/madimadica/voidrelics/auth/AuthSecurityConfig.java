@@ -1,6 +1,7 @@
 package com.madimadica.voidrelics.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.madimadica.voidrelics.account.UserAccountService;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,8 +10,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
@@ -30,29 +29,20 @@ import java.util.Objects;
 @EnableMethodSecurity
 public class AuthSecurityConfig implements WebMvcConfigurer {
 
-    private JsonUsernamePasswordAuthenticationFilter loginAuthFilter = null;
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
+    private final UserAccountService userAccountService;
 
-    public AuthSecurityConfig(ObjectMapper objectMapper, ApplicationEventPublisher eventPublisher) {
+    public AuthSecurityConfig(ObjectMapper objectMapper, ApplicationEventPublisher eventPublisher, UserAccountService userAccountService) {
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
-    }
-
-    public JsonUsernamePasswordAuthenticationFilter jsonUsernamePasswordAuthenticationFilter() {
-        return loginAuthFilter;
+        this.userAccountService = userAccountService;
     }
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new CustomUserArgumentResolver());
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 
 
     /**
@@ -62,8 +52,6 @@ public class AuthSecurityConfig implements WebMvcConfigurer {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration cfg) throws Exception {
         return cfg.getAuthenticationManager();
     }
-
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -75,8 +63,11 @@ public class AuthSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers("/api/v1/mod/**").hasAnyRole(AuthRole.ADMIN.toRoleName(), AuthRole.MODERATOR.toRoleName())
                 .anyRequest().permitAll()
         );
-        loginAuthFilter = new JsonUsernamePasswordAuthenticationFilter(objectMapper, eventPublisher);
-        http.addFilterAfter(loginAuthFilter, LogoutFilter.class);
+        var loginAuthFilter = new JsonUsernamePasswordAuthenticationFilter(objectMapper, eventPublisher);
+        var registerFilter = new AccountRegistrationFilter(objectMapper, userAccountService, loginAuthFilter);
+
+        http.addFilterBefore(registerFilter, LogoutFilter.class);
+        http.addFilterBefore(loginAuthFilter, LogoutFilter.class);
 
         var chain = http.build();
 

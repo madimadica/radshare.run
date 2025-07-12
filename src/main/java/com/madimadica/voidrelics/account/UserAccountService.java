@@ -1,7 +1,7 @@
 package com.madimadica.voidrelics.account;
 
-import com.madimadica.voidrelics.account.dto.UserAccountRegistrationDto;
 import com.madimadica.voidrelics.auth.AuthRole;
+import com.madimadica.voidrelics.auth.dto.UserAccountRegistrationDto;
 import com.madimadica.voidrelics.exceptions.ApiError;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

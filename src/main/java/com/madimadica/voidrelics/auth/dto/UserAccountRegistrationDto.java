@@ -1,4 +1,4 @@
-package com.madimadica.voidrelics.account.dto;
+package com.madimadica.voidrelics.auth.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
