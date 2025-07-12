@@ -5,6 +5,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+
+  devtools.restart.enabled: false
+
 server:
   error:
     path: /error
