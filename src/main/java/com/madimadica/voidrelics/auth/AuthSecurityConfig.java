@@ -10,10 +10,11 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.security.web.context.SecurityContextRepository;
+import org.springframework.security.web.savedrequest.RequestCacheAwareFilter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -65,9 +66,12 @@ public class AuthSecurityConfig implements WebMvcConfigurer {
         );
         var loginAuthFilter = new JsonUsernamePasswordAuthenticationFilter(objectMapper, eventPublisher);
         var registerFilter = new AccountRegistrationFilter(objectMapper, userAccountService, loginAuthFilter);
+        var logoutFilter = new CustomLogoutFilter(eventPublisher);
 
-        http.addFilterBefore(registerFilter, LogoutFilter.class);
-        http.addFilterBefore(loginAuthFilter, LogoutFilter.class);
+        http.logout(AbstractHttpConfigurer::disable);
+        http.addFilterBefore(logoutFilter, RequestCacheAwareFilter.class);
+        http.addFilterBefore(registerFilter, RequestCacheAwareFilter.class);
+        http.addFilterBefore(loginAuthFilter, RequestCacheAwareFilter.class);
 
         var chain = http.build();
 
