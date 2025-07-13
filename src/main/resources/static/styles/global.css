@@ -73,7 +73,7 @@ main {
 
 .app-navbar-wrapper__desktop {
     display: flex;
-    gap: 1rem;
+    gap: 2.5rem;
     align-items: center;
 }
 
@@ -93,13 +93,13 @@ main {
     text-decoration: none;
     font-size: 1.1rem;
     display: inline-flex;
+    font-weight: 500;
     border-radius: 0.3rem;
     padding: 0.5rem 1rem;
     &:hover, &:active, &:focus {
-        color: black;
-        background-color: var(--accent);
+        color: var(--secondary-800);
     }
-    transition: background-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out;
 }
 
 .app-navbar-auth__desktop {
