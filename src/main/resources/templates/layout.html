@@ -56,7 +56,12 @@
                 </ul>
             </nav>
             <div class="app-navbar-auth__desktop">
-                <a href="/profile" class="btn btn-bronze-outline-2 d-flex align-items-center justify-content-center gap-2" role="button"><i class="bi bi-box-arrow-in-right" style="font-size: 1.2rem"></i><span style="font-weight: 500"> Sign In</span></a>
+                <button id="navbar-sign-in-button" type="button" class="btn btn-bronze-outline-2 d-flex align-items-center justify-content-center gap-2" th:classappend="${APP_USER != null ? 'd-none' : ''}" role="button">
+                    <i class="bi bi-box-arrow-in-right" style="font-size: 1.2rem"></i><span style="font-weight: 500">Sign In</span>
+                </button>
+                <button id="navbar-user-button" type="button" class="btn btn-bronze-outline-2 d-flex align-items-center justify-content-center gap-2" th:classappend="${APP_USER == null ? 'd-none' : ''}" role="button">
+                    <i class="bi bi-person-fill" style="font-size: 1.2rem"></i><span style="font-weight: 500" th:text="${APP_USER?.username}">Username</span>
+                </button>
             </div>
         </div>
 
