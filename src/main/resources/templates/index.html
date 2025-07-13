@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" layout:decorate="~{layout}" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html lang="en" layout:decorate="~{layout}" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Home</title>
 </head>
@@ -10,7 +10,60 @@
         <ul>
             <li th:each="r : ${relics}" th:text="|${r.era} ${r.name}|"></li>
         </ul>
+
+        <!-- Sign-In/Register Modal -->
+        <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn-close pe-4 pt-4" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="auth-modal__wrapper">
+
+                        <div class="auth-modal__toggle">
+                            <div class="auth-modal__toggle-btn active" id="auth-modal-login-toggle-btn">Sign In</div>
+                            <div class="auth-modal__toggle-btn" id="auth-modal-register-toggle-btn">Register</div>
+                        </div>
+
+                        <div id="auth-modal-login-section" class="auth-modal__login-section">
+                            <div class="form-group">
+                                <label class="form-label" for="login-username">Warframe Username / Email</label>
+                                <input type="text" class="form-control" id="login-username" name="wf_username">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="form-label" for="login-password">Password</label>
+                                <input type="password" class="form-control" id="login-password">
+                            </div>
+                            <div class="auth-modal-btn-wrapper">
+                                <button id="auth-modal-login-btn" type="button" class="btn btn-outline-silver auth-modal-btn">Sign In</button>
+                            </div>
+                        </div>
+
+                        <div id="auth-modal-register-section" class="auth-modal__register-section mt-4">
+                            <div class="form-group">
+                                <label class="form-label" for="register-username">Warframe Username</label>
+                                <input type="text" class="form-control" id="register-username" name="wf_username">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="form-label" for="register-email">Email (Optional)</label>
+                                <input type="email" class="form-control" id="register-email" name="email">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="form-label" for="register-password">Password</label>
+                                <input type="password" class="form-control" id="register-password">
+                            </div>
+                            <div class="auth-modal-btn-wrapper">
+                                <button id="auth-modal-register-btn" type="button" class="btn btn-outline-silver auth-modal-btn">Register</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </main>
 </body>
 </html>

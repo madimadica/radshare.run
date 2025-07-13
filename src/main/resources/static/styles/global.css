@@ -270,3 +270,52 @@ main {
 footer {
     --bs-border-color: var(--secondary-500);
 }
+
+
+.form-label {
+    color: #eee;
+}
+
+.auth-modal__wrapper {
+    margin: 0 1rem 1rem 1rem;
+}
+
+.auth-modal__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #999;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.auth-modal__toggle-btn {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.3rem;
+    font-size: 1.15rem;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.auth-modal__toggle-btn.active {
+    background-color: var(--primary);
+    color: black;
+}
+
+.auth-modal__login-section {
+    margin-top: 1.5rem;
+}
+
+.auth-modal-btn {
+    width: 100%;
+}
+
+.auth-modal-btn-wrapper {
+    display: flex;
+    margin-top: 1.5rem;
+}
+
