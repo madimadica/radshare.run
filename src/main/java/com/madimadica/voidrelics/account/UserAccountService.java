@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 @Service
@@ -14,6 +15,14 @@ public class UserAccountService {
 
     private final UserAccountDao userAccountDao;
     private final PasswordEncoder passwordEncoder;
+
+    private enum FormField {
+        USERNAME("username"), EMAIL("email"), PASSWORD("password");
+        private final String field;
+        FormField(String field) {
+            this.field = field;
+        }
+    }
 
     public UserAccountService(UserAccountDao userAccountDao, PasswordEncoder passwordEncoder) {
         this.userAccountDao = userAccountDao;
@@ -50,7 +59,7 @@ public class UserAccountService {
     public void validateUsernameAvailability(String username) {
         var $user = userAccountDao.findByUsername(username);
         if ($user.isPresent()) {
-            throw new ApiError(409, "Username already taken");
+            throwRegistrationError(FormField.USERNAME, "Username already taken");
         }
     }
 
@@ -65,7 +74,7 @@ public class UserAccountService {
             return;
         }
         if (email == null) {
-            throw new ApiError(409, "Username already taken");
+            throwRegistrationError(FormField.USERNAME, "Username already taken");
         }
         boolean foundUsername = false;
         boolean foundEmail = false;
@@ -78,9 +87,9 @@ public class UserAccountService {
             }
         }
         if (foundUsername && foundEmail) {
-            throw new ApiError(409, "Username and email already taken");
+            throwRegistrationError(FormField.USERNAME, "Username and email already taken");
         } else {
-            throw new ApiError(409, "Email already taken");
+            throwRegistrationError(FormField.EMAIL, "Email already taken");
         }
     }
 
@@ -97,11 +106,11 @@ public class UserAccountService {
      */
     public String validateUsername(String username) {
         if (username == null) {
-            throw new ApiError(400, "Username cannot be null");
+            throwRegistrationError(FormField.USERNAME, "Username cannot be null");
         }
         username = username.trim();
         if (!USERNAME_PATTERN.matcher(username).matches()) {
-            throw new ApiError(404, "Invalid username");
+            throwRegistrationError(FormField.USERNAME, "Invalid username");
         }
         return username;
     }
@@ -113,16 +122,16 @@ public class UserAccountService {
 
     public String validatePassword(String password) {
         if (password == null) {
-            throw new ApiError(400, "Password cannot be null");
+            throwRegistrationError(FormField.PASSWORD, "Password cannot be null");
         }
         password = password.trim();
         final int minLength = 12;
         if (password.length() < minLength) {
-            throw new ApiError(400, "Password must be at least " + minLength + " characters");
+            throwRegistrationError(FormField.PASSWORD, "Password must be at least " + minLength + " characters");
         }
         final int maxLength = 72;
         if (password.length() > maxLength) {
-            throw new ApiError(400, "Password cannot exceed " + maxLength + " characters");
+            throwRegistrationError(FormField.PASSWORD, "Password cannot exceed " + maxLength + " characters");
         }
 
         if (HAS_SYMBOL.matcher(password).find()) {
@@ -135,7 +144,7 @@ public class UserAccountService {
         boolean hasDigit = HAS_DIGIT.matcher(password).find();
         int total = (hasLower ? 1 : 0) + (hasUpper ? 1 : 0) + (hasDigit ? 1 : 0);
         if (total < 2) {
-            throw new ApiError(400, "Password must contain at least one symbol, or at least 2 of [Uppercase, Lowercase, Digit]");
+            throwRegistrationError(FormField.PASSWORD, "Password must contain at least one symbol, or at least 2 of [Uppercase, Lowercase, Digit]");
         }
         return password;
     }
@@ -149,11 +158,15 @@ public class UserAccountService {
         }
         email = email.trim();
         if (email.length() > 500) {
-            throw new ApiError(400, "Invalid email length");
+            throwRegistrationError(FormField.EMAIL, "Email cannot exceed 500 characters");
         }
         if (!EMAIL_REGEX.matcher(email).matches()) {
-            throw new ApiError(400, "Invalid email");
+            throwRegistrationError(FormField.EMAIL, "Invalid email format");
         }
         return email;
+    }
+
+    private void throwRegistrationError(FormField formField, String message) {
+        throw new ApiError(400, message, Map.of("field", formField.field));
     }
 }

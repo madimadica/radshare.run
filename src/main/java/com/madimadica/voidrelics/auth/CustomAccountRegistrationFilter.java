@@ -2,7 +2,9 @@ package com.madimadica.voidrelics.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.madimadica.voidrelics.account.UserAccountService;
+import com.madimadica.voidrelics.auth.dto.AuthenticatedUserDto;
 import com.madimadica.voidrelics.auth.dto.UserAccountRegistrationDto;
+import com.madimadica.voidrelics.exceptions.ApiError;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -40,7 +42,15 @@ public class CustomAccountRegistrationFilter implements Filter {
         }
         String requestBody = String.join("\n", request.getReader().lines().toList());
         UserAccountRegistrationDto dto = objectMapper.readValue(requestBody, UserAccountRegistrationDto.class);
-        var userDetails = userAccountService.register(dto).toCustomUser();
+        CustomUser userDetails;
+        try {
+            userDetails = userAccountService.register(dto).toCustomUser();
+        } catch (ApiError e) {
+            response.setStatus(e.status());
+            response.setContentType("application/json");
+            objectMapper.writeValue(response.getOutputStream(), e.toJson());
+            return;
+        }
         LOGGER.info("Registered new user {}", userDetails);
         // Automatically log in the newly registered user
         var auth = loginAuthFilter.loginHelper(request, response, dto.username(), dto.password());

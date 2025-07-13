@@ -1,5 +1,8 @@
 package com.madimadica.voidrelics.exceptions;
 
+import com.madimadica.utils.Maps;
+
+import java.time.Instant;
 import java.util.Map;
 
 public class ApiError extends RuntimeException {
@@ -31,5 +34,15 @@ public class ApiError extends RuntimeException {
 
     public Map<String, Object> details() {
         return details;
+    }
+
+    public Map<String, Object> toJson() {
+        Map<String, Object> errorJson = Maps.ofMutable(
+                "timestamp", Instant.now(),
+                "status", status(),
+                "message", message()
+        );
+        errorJson.putAll(details());
+        return errorJson;
     }
 }
